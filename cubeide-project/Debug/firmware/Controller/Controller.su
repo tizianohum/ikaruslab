@@ -1,0 +1,7 @@
+../firmware/Controller/Controller.cpp:8:1:Controller::Controller()	16	static
+../firmware/Controller/Controller.cpp:12:6:void Controller::init(controller_config_t)	16	static
+../firmware/Controller/Controller.cpp:17:6:void Controller::start()	16	static
+../firmware/Controller/Controller.cpp:24:6:void Controller::task_fuction()	16	static
+../firmware/Controller/Controller.cpp:36:10:uint16_t Controller::getThrust()	16	static
+../firmware/Controller/Controller.cpp:42:33:ikarus_control_external_input_t Controller::getControlInputs()	16	static
+../firmware/Controller/Controller.cpp:47:6:void controller_task(void*)	24	static

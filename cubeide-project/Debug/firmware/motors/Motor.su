@@ -1,0 +1,6 @@
+../firmware/motors/Motor.cpp:5:1:Motor::Motor()	16	static
+../firmware/motors/Motor.cpp:7:6:void Motor::init(motor_config_t)	24	static
+../firmware/motors/Motor.cpp:13:6:bool Motor::start()	16	static
+../firmware/motors/Motor.cpp:18:6:void Motor::setSignal(uint16_t)	16	static
+../firmware/motors/Motor.cpp:22:6:void Motor::updatePWM()	16	static
+../firmware/motors/Motor.cpp:29:6:void armingSequence()	4	static

@@ -1,0 +1,8 @@
+../firmware/sensors/ultrasonic.cpp:17:1:UltrasonicSensor::UltrasonicSensor()	16	static
+../firmware/sensors/ultrasonic.cpp:20:6:void UltrasonicSensor::init(ultrasonic_config_t*)	16	static
+../firmware/sensors/ultrasonic.cpp:27:6:void UltrasonicSensor::start()	16	static
+../firmware/sensors/ultrasonic.cpp:46:6:void UltrasonicSensor::task()	16	static
+../firmware/sensors/ultrasonic.cpp:53:7:float UltrasonicSensor::getDistance()	16	static
+../firmware/sensors/ultrasonic.cpp:57:6:void UltrasonicSensor::handleExti(uint16_t)	16	static
+../firmware/sensors/ultrasonic.cpp:84:6:void start_ultrasonic_task(void*)	24	static
+../firmware/sensors/ultrasonic.cpp:89:17:void HAL_GPIO_EXTI_Callback(uint16_t)	16	static

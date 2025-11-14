@@ -1,0 +1,6 @@
+../firmware/motors/MotorController.cpp:5:1:IKARUS_MotorController::IKARUS_MotorController()	16	static
+../firmware/motors/MotorController.cpp:10:6:void IKARUS_MotorController::init(motor_controller_config_t*)	64	static
+../firmware/motors/MotorController.cpp:40:6:void IKARUS_MotorController::start()	24	static
+../firmware/motors/MotorController.cpp:52:6:void IKARUS_MotorController::update()	24	static
+../firmware/motors/MotorController.cpp:68:6:void IKARUS_MotorController::setThrust(float, float, float, float)	32	static
+../firmware/motors/MotorController.cpp:82:6:void IKARUS_MotorController::updateAllMotors()	24	static

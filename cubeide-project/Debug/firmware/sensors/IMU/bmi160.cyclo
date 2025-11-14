@@ -1,0 +1,25 @@
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/core_math.h:15:14:float deg2rad(float)	1
+../firmware/sensors/IMU/bmi160.cpp:15:13:void delay(uint32_t)	2
+../firmware/sensors/IMU/bmi160.h:44:16:constexpr bmi160_gyr_calib_t::bmi160_gyr_calib_t()	1
+../firmware/sensors/IMU/bmi160.h:57:16:constexpr bmi160_gyr_config_t::bmi160_gyr_config_t()	1
+../firmware/sensors/IMU/bmi160.h:50:16:constexpr bmi160_acc_config_t::bmi160_acc_config_t()	1
+../firmware/sensors/IMU/bmi160.h:64:16:bmi160_config_t::bmi160_config_t()	1
+../firmware/sensors/IMU/bmi160.cpp:30:1:BMI160::BMI160()	1
+../firmware/sensors/IMU/bmi160.cpp:35:9:uint8_t BMI160::writeRegister(uint8_t, uint8_t)	1
+../firmware/sensors/IMU/bmi160.cpp:45:9:uint8_t BMI160::init(bmi160_config_t)	6
+../firmware/sensors/IMU/bmi160.cpp:102:9:uint8_t BMI160::readRegister(uint8_t)	1
+../firmware/sensors/IMU/bmi160.cpp:115:9:uint8_t BMI160::readMultipleRegister(uint8_t, uint8_t*, uint8_t)	1
+../firmware/sensors/IMU/bmi160.cpp:128:9:uint8_t BMI160::check()	2
+../firmware/sensors/IMU/bmi160.cpp:138:9:uint8_t BMI160::readID()	1
+../firmware/sensors/IMU/bmi160.cpp:143:6:void BMI160::update()	1
+../firmware/sensors/IMU/bmi160.cpp:149:9:uint8_t BMI160::fetchData()	1
+../firmware/sensors/IMU/bmi160.cpp:158:9:uint8_t BMI160::processData()	10
+../firmware/sensors/IMU/bmi160.cpp:241:6:void BMI160::setCalibration(float, float, float)	1
+../firmware/sensors/IMU/bmi160.cpp:248:9:uint8_t BMI160::readGyr()	1
+../firmware/sensors/IMU/bmi160.cpp:260:9:uint8_t BMI160::readAcc()	1
+../firmware/sensors/IMU/bmi160.cpp:272:9:uint8_t BMI160::readSensorTime()	1
+../firmware/sensors/IMU/bmi160.cpp:280:9:uint8_t BMI160::setGyroConfig(uint8_t, uint8_t)	1
+../firmware/sensors/IMU/bmi160.cpp:289:9:uint8_t BMI160::setAccConfig(uint8_t, uint8_t)	1
+../firmware/sensors/IMU/bmi160.cpp:297:9:uint8_t BMI160::setPowerMode(BMI160_PowerMode)	3
+../firmware/sensors/IMU/bmi160.cpp:314:6:void BMI160::fastOffsetCalibration()	3
+../firmware/sensors/IMU/bmi160.cpp:353:6:void BMI160::reset()	1

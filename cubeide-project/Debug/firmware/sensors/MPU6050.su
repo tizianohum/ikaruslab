@@ -1,0 +1,9 @@
+../firmware/sensors/MPU6050.cpp:15:1:MPU6050::MPU6050()	16	static
+../firmware/sensors/MPU6050.cpp:18:6:void MPU6050::WriteReg(uint8_t, uint8_t)	32	static
+../firmware/sensors/MPU6050.cpp:22:6:void MPU6050::WakeUp()	16	static
+../firmware/sensors/MPU6050.cpp:31:6:void MPU6050::SetAccRange(mpu6050_acc_range_t)	16	static
+../firmware/sensors/MPU6050.cpp:43:6:void MPU6050::SetGyrRange(mpu6050_gyr_range_t)	16	static
+../firmware/sensors/MPU6050.cpp:55:6:void MPU6050::init(mpu6050_config_t*)	16	static
+../firmware/sensors/MPU6050.cpp:64:6:void MPU6050::ReadAll(MPU6050_Raw3Axis&, MPU6050_Raw3Axis&)	56	static
+../firmware/sensors/MPU6050.cpp:76:6:void MPU6050::Convert(const MPU6050_Raw3Axis&, const MPU6050_Raw3Axis&, MPU6050_Scaled3Axis&, MPU6050_Scaled3Axis&)	24	static
+../firmware/sensors/MPU6050.cpp:87:6:void MPU6050::Calibrate(uint16_t)	64	static

@@ -1,0 +1,10 @@
+../firmware/sensors/IKARUS_Sensors.cpp:7:1:IKARUS_Sensors::IKARUS_Sensors()	1
+../firmware/sensors/IKARUS_Sensors.cpp:10:6:void IKARUS_Sensors::init(ultrasonic_config_t*, mpu6050_config_t*, gy271_config_t*)	1
+../firmware/sensors/IKARUS_Sensors.cpp:27:6:void IKARUS_Sensors::start()	1
+../firmware/sensors/IKARUS_Sensors.cpp:36:6:void IKARUS_Sensors::update()	1
+../firmware/sensors/IKARUS_Sensors.cpp:59:23:ikarus_sensors_data_t IKARUS_Sensors::getData()	1
+../firmware/sensors/IKARUS_Sensors.cpp:73:6:void IKARUS_Sensors::getAccelerometer(float&, float&, float&) const	1
+../firmware/sensors/IKARUS_Sensors.cpp:79:6:void IKARUS_Sensors::getGyroscope(float&, float&, float&) const	1
+../firmware/sensors/IKARUS_Sensors.cpp:85:7:float IKARUS_Sensors::getBarometer() const	1
+../firmware/sensors/IKARUS_Sensors.cpp:89:7:float IKARUS_Sensors::getUltrasonic()	1
+../firmware/sensors/IKARUS_Sensors.cpp:93:6:void IKARUS_Sensors::_readImu()	1

@@ -1,0 +1,11 @@
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp:29:7:bool Controller::getArmedStatus()	16	static
+../firmware/firmware.cpp:37:6:void firmware()	8	static
+../firmware/firmware.cpp:41:6:void start_firmware_task(void*)	24	static
+../firmware/firmware.cpp:47:1:IKARUS_Firmware::IKARUS_Firmware()	16	static
+../firmware/firmware.cpp:51:6:void IKARUS_Firmware::helperTask()	32	static
+../firmware/firmware.cpp:96:19:HAL_StatusTypeDef IKARUS_Firmware::init()	120	static
+../firmware/firmware.cpp:139:19:HAL_StatusTypeDef IKARUS_Firmware::start()	16	static
+../firmware/firmware.cpp:159:6:void IKARUS_Firmware::task()	24	static
+../firmware/firmware.cpp:220:6:void start_firmware_control_task(void*)	24	static
+../firmware/firmware.cpp:223:1:void __static_initialization_and_destruction_0()	8	static
+../firmware/firmware.cpp:223:1:cpp)	8	static

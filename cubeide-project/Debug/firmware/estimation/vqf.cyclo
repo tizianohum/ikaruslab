@@ -1,0 +1,82 @@
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/limits:1772:7:static constexpr double std::numeric_limits<double>::epsilon()	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/limits:1794:7:static constexpr double std::numeric_limits<double>::quiet_NaN()	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/cmath:1179:3:constexpr bool std::isnan(double)	1
+../firmware/estimation/vqf.cpp:16:19:vqf_real_t square(vqf_real_t)	1
+../firmware/estimation/vqf.cpp:19:1:VQFParams::VQFParams()	1
+../firmware/estimation/vqf.cpp:53:1:VQF::VQF(vqf_real_t, vqf_real_t, vqf_real_t)	3
+../firmware/estimation/vqf.cpp:62:1:VQF::VQF(const VQFParams&, vqf_real_t, vqf_real_t, vqf_real_t)	3
+../firmware/estimation/vqf.cpp:73:6:void VQF::updateGyr(const vqf_real_t*)	9
+../firmware/estimation/vqf.cpp:107:6:void VQF::updateAcc(const vqf_real_t*)	18
+../firmware/estimation/vqf.cpp:288:6:void VQF::updateMag(const vqf_real_t*)	26
+../firmware/estimation/vqf.cpp:403:6:void VQF::update(const vqf_real_t*, const vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:409:6:void VQF::update(const vqf_real_t*, const vqf_real_t*, const vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:416:6:void VQF::updateBatch(const vqf_real_t*, const vqf_real_t*, const vqf_real_t*, size_t, vqf_real_t*, vqf_real_t*, vqf_real_t*, vqf_real_t*, vqf_real_t*, bool*, bool*)	10
+../firmware/estimation/vqf.cpp:450:6:void VQF::getQuat3D(vqf_real_t*) const	1
+../firmware/estimation/vqf.cpp:455:6:void VQF::getQuat6D(vqf_real_t*) const	1
+../firmware/estimation/vqf.cpp:460:6:void VQF::getQuat9D(vqf_real_t*) const	1
+../firmware/estimation/vqf.cpp:466:12:vqf_real_t VQF::getDelta() const	1
+../firmware/estimation/vqf.cpp:471:12:vqf_real_t VQF::getBiasEstimate(vqf_real_t*) const	2
+../firmware/estimation/vqf.cpp:490:6:void VQF::setBiasEstimate(vqf_real_t*, vqf_real_t)	2
+../firmware/estimation/vqf.cpp:503:6:bool VQF::getRestDetected() const	1
+../firmware/estimation/vqf.cpp:508:6:bool VQF::getMagDistDetected() const	1
+../firmware/estimation/vqf.cpp:513:6:void VQF::getRelativeRestDeviations(vqf_real_t*) const	1
+../firmware/estimation/vqf.cpp:519:12:vqf_real_t VQF::getMagRefNorm() const	1
+../firmware/estimation/vqf.cpp:524:12:vqf_real_t VQF::getMagRefDip() const	1
+../firmware/estimation/vqf.cpp:529:6:void VQF::setMagRef(vqf_real_t, vqf_real_t)	1
+../firmware/estimation/vqf.cpp:536:6:void VQF::setMotionBiasEstEnabled(bool)	2
+../firmware/estimation/vqf.cpp:547:6:void VQF::setRestBiasEstEnabled(bool)	2
+../firmware/estimation/vqf.cpp:562:6:void VQF::setMagDistRejectionEnabled(bool)	2
+../firmware/estimation/vqf.cpp:579:6:void VQF::setTauAcc(vqf_real_t)	4
+../firmware/estimation/vqf.cpp:610:6:void VQF::setTauMag(vqf_real_t)	1
+../firmware/estimation/vqf.cpp:616:6:void VQF::setRestDetectionThresholds(vqf_real_t, vqf_real_t)	1
+../firmware/estimation/vqf.cpp:622:18:const VQFParams& VQF::getParams() const	1
+../firmware/estimation/vqf.cpp:627:24:const VQFCoefficients& VQF::getCoeffs() const	1
+../firmware/estimation/vqf.cpp:632:17:const VQFState& VQF::getState() const	1
+../firmware/estimation/vqf.cpp:637:6:void VQF::setState(const VQFState&)	1
+../firmware/estimation/vqf.cpp:642:6:void VQF::resetState()	1
+../firmware/estimation/vqf.cpp:689:6:static void VQF::quatMultiply(const vqf_real_t*, const vqf_real_t*, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:698:6:static void VQF::quatConj(const vqf_real_t*, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:708:6:static void VQF::quatSetToIdentity(vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:716:6:static void VQF::quatApplyDelta(vqf_real_t*, vqf_real_t, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:728:6:static void VQF::quatRotate(const vqf_real_t*, const vqf_real_t*, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:736:12:static vqf_real_t VQF::norm(const vqf_real_t*, size_t)	2
+../firmware/estimation/vqf.cpp:745:6:static void VQF::normalize(vqf_real_t*, size_t)	3
+../firmware/estimation/vqf.cpp:756:6:static void VQF::clip(vqf_real_t*, size_t, vqf_real_t, vqf_real_t)	4
+../firmware/estimation/vqf.cpp:767:12:static vqf_real_t VQF::gainFromTau(vqf_real_t, vqf_real_t)	3
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/cmath:450:5:constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::sqrt(_Tp) [with _Tp = int]	1
+../firmware/estimation/vqf.cpp:779:6:static void VQF::filterCoeffs(vqf_real_t, vqf_real_t, double*, double*)	1
+../firmware/estimation/vqf.cpp:796:6:static void VQF::filterInitialState(vqf_real_t, const double*, const double*, double*)	1
+../firmware/estimation/vqf.cpp:804:6:static void VQF::filterAdaptStateForCoeffChange(vqf_real_t*, size_t, const double*, const double*, const double*, const double*, double*)	3
+../firmware/estimation/vqf.cpp:817:12:static vqf_real_t VQF::filterStep(vqf_real_t, const double*, const double*, double*)	1
+../firmware/estimation/vqf.cpp:827:6:static void VQF::filterVec(const vqf_real_t*, size_t, vqf_real_t, vqf_real_t, const double*, const double*, double*, vqf_real_t*)	8
+../firmware/estimation/vqf.cpp:860:6:static void VQF::matrix3SetToScaledIdentity(vqf_real_t, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:873:6:static void VQF::matrix3Multiply(const vqf_real_t*, const vqf_real_t*, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:888:6:static void VQF::matrix3MultiplyTpsFirst(const vqf_real_t*, const vqf_real_t*, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:903:6:static void VQF::matrix3MultiplyTpsSecond(const vqf_real_t*, const vqf_real_t*, vqf_real_t*)	1
+../firmware/estimation/vqf.cpp:918:6:static bool VQF::matrix3Inv(const vqf_real_t*, vqf_real_t*)	4
+../firmware/estimation/vqf.cpp:953:6:void VQF::setup()	2
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:1000:5:void std::fill(_ForwardIterator, _ForwardIterator, const _Tp&) [with _ForwardIterator = double*; _Tp = double]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:1000:5:void std::fill(_ForwardIterator, _ForwardIterator, const _Tp&) [with _ForwardIterator = double*; _Tp = int]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:257:5:constexpr const _Tp& std::max(const _Tp&, const _Tp&) [with _Tp = double]	2
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:624:5:_OI std::copy(_II, _II, _OI) [with _II = double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:624:5:_OI std::copy(_II, _II, _OI) [with _II = const double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:233:5:constexpr const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = double]	2
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:976:5:void std::__fill_a(_FIte, _FIte, const _Tp&) [with _FIte = double*; _Tp = double]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:976:5:void std::__fill_a(_FIte, _FIte, const _Tp&) [with _FIte = double*; _Tp = int]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/cpp_type_traits.h:607:5:_Iterator std::__miter_base(_Iterator) [with _Iterator = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:538:5:_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/cpp_type_traits.h:607:5:_Iterator std::__miter_base(_Iterator) [with _Iterator = const double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:538:5:_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = const double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:926:5:typename __gnu_cxx::__enable_if<std::__is_scalar<_Tp>::__value, void>::__type std::__fill_a1(_ForwardIterator, _ForwardIterator, const _Tp&) [with _ForwardIterator = double*; _Tp = double]	2
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:926:5:typename __gnu_cxx::__enable_if<std::__is_scalar<_Tp>::__value, void>::__type std::__fill_a1(_ForwardIterator, _ForwardIterator, const _Tp&) [with _ForwardIterator = double*; _Tp = int]	2
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:316:5:_Iterator std::__niter_base(_Iterator) [with _Iterator = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:532:5:_OI std::__copy_move_a1(_II, _II, _OI) [with bool _IsMove = false; _II = double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:338:5:_Iterator std::__niter_wrap(const _Iterator&, _Iterator) [with _Iterator = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:316:5:_Iterator std::__niter_base(_Iterator) [with _Iterator = const double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:532:5:_OI std::__copy_move_a1(_II, _II, _OI) [with bool _IsMove = false; _II = const double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:497:5:_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:497:5:_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = const double*; _OI = double*]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:433:2:static _Up* std::__copy_move<_IsMove, true, std::random_access_iterator_tag>::__copy_m(_Tp*, _Tp*, _Up*) [with _Tp = double; _Up = double; bool _IsMove = false]	3
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:433:2:static _Up* std::__copy_move<_IsMove, true, std::random_access_iterator_tag>::__copy_m(_Tp*, _Tp*, _Up*) [with _Tp = const double; _Up = double; bool _IsMove = false]	3
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:397:2:static void std::__copy_move<false, false, std::random_access_iterator_tag>::__assign_one(_Tp*, _Up*) [with _Tp = double; _Up = double]	1
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/c++/13.3.1/bits/stl_algobase.h:397:2:static void std::__copy_move<false, false, std::random_access_iterator_tag>::__assign_one(_Tp*, _Up*) [with _Tp = double; _Up = const double]	1

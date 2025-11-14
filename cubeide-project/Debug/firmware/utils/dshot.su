@@ -1,0 +1,1 @@
+../firmware/utils/dshot.cpp:8:6:void prepare_dshot_buffer(uint16_t, uint32_t*)	32	static

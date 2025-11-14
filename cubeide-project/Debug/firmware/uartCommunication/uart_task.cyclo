@@ -1,0 +1,15 @@
+../firmware/uartCommunication/uart_task.cpp:81:6:void UART_Comm_Init()	1
+../firmware/uartCommunication/uart_task.cpp:97:13:void UartRxTask(void*)	2
+../firmware/uartCommunication/uart_task.cpp:109:17:void UART_IdleCallback(UART_HandleTypeDef*)	21
+../firmware/uartCommunication/uart_task.cpp:158:13:void MessageTask(void*)	10
+../firmware/uartCommunication/uart_task.cpp:220:13:void UartTxTask(void*)	2
+../firmware/uartCommunication/uart_task.cpp:235:17:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	2
+../firmware/uartCommunication/uart_task.cpp:244:6:void UART_Send(const char*)	2
+../firmware/uartCommunication/uart_task.cpp:254:6:void UART_SendBinary(const uint8_t*, size_t)	4
+../firmware/uartCommunication/RingBuffer.h:22:5:RingBuffer<T, Size>::RingBuffer() [with T = unsigned char; short unsigned int Size = 512]	1
+../firmware/uartCommunication/RingBuffer.h:57:10:void RingBuffer<T, Size>::reset() [with T = unsigned char; short unsigned int Size = 512]	1
+../firmware/uartCommunication/RingBuffer.h:24:10:bool RingBuffer<T, Size>::put(T) [with T = unsigned char; short unsigned int Size = 512]	2
+../firmware/uartCommunication/RingBuffer.h:35:10:bool RingBuffer<T, Size>::get(T&) [with T = unsigned char; short unsigned int Size = 512]	2
+../firmware/uartCommunication/RingBuffer.h:49:10:bool RingBuffer<T, Size>::isEmpty() const [with T = unsigned char; short unsigned int Size = 512]	1
+../firmware/uartCommunication/uart_task.cpp:268:1:void __static_initialization_and_destruction_0()	1
+../firmware/uartCommunication/uart_task.cpp:268:1:cpp)	1
