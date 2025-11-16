@@ -12,7 +12,7 @@
 #include "stdint.h"
 #include "stm32h7xx_hal.h"
 #include <string>
-
+#include "estimation/estimation.hpp"
 // Define error flag macros for communication error responses.
 #define IKARUS_COMM_ERROR_FLAG_UNKNOWN         0x01  ///< Unknown error flag.
 #define IKARUS_COMM_ERROR_FLAG_WRONG_ADDRESS   0x02  ///< Error flag
@@ -41,6 +41,7 @@ public:
     // Senden über UART
     void send(const char *msg);
     void sendBinary(const uint8_t *data, size_t len);
+    void sendSample(ikarus_estimation_state_t *sample);
 
     ikarus_communication_config_t config;
     ikarus_logging_sample_t _sample_buffer_tx;

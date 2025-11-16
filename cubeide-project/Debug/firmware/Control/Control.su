@@ -1,4 +1,4 @@
 ../firmware/Control/Control.cpp:11:1:IKARUS_ControlManager::IKARUS_ControlManager()	16	static
 ../firmware/Control/Control.cpp:14:6:void IKARUS_ControlManager::init(ikarus_control_init_config_t)	24	static
 ../firmware/Control/Control.cpp:23:9:uint8_t IKARUS_ControlManager::start()	16	static
-../firmware/Control/Control.cpp:37:6:void IKARUS_ControlManager::update()	48	static
+../firmware/Control/Control.cpp:37:6:void IKARUS_ControlManager::update()	56	static

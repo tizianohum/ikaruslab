@@ -34,12 +34,23 @@ extern "C" {
 
 /* === Nachrichtentypen === */
 typedef enum {
-    IKARUS_MSG_THRUST     = 1,   // Motor Thrust Kommando
-    IKARUS_MSG_PID        = 2,   // PID-Parameter setzen
-    IKARUS_MSG_WAYPOINT   = 3,   // Positionsdaten
-    IKARUS_MSG_PING       = 10,  // Verbindungstest
-	IKARUS_MSG_ARMING = 0,	  // Arming/Disarming
+	IKARUS_MSG_THRUST = 1,
+	IKARUS_MSG_ARMING = 0,
+	IKARUS_MSG_PITCH  = 2,
+	IKARUS_MSG_ROLL   = 3,
+	IKARUS_MSG_YAW    = 4,
+
+	IKARUS_MSG_MOTOR1 = 5,
+	IKARUS_MSG_MOTOR2 = 6,
+	IKARUS_MSG_MOTOR3 = 7,
+	IKARUS_MSG_MOTOR4 = 8,
+
+	IKARUS_MSG_SAMPLE_UPDATE = 10
 } ikarus_msg_type_t;
+
+typedef struct __attribute__((packed)) {
+    float value;
+} ikarus_float_t;
 
 /* === Allgemeine Nachrichtenstruktur === */
 #pragma pack(push, 1)

@@ -54,7 +54,18 @@ firmware/uartCommunication/uart_task.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../firmware/uartCommunication/ikarus_communication.h \
- ../firmware/uartCommunication/ikarus_protocoll.h
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IKARUS_sensors.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/ultrasonic.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/mpu6050.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/GY271.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160_defs.h \
+ ../Core/Inc/spi.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/core_bytes.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -110,4 +121,15 @@ firmware/uartCommunication/uart_task.o: \
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 ../firmware/uartCommunication/ikarus_communication.h:
-../firmware/uartCommunication/ikarus_protocoll.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IKARUS_sensors.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/ultrasonic.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/mpu6050.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/GY271.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160_defs.h:
+../Core/Inc/spi.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/core_bytes.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h:

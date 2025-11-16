@@ -37,12 +37,6 @@ firmware/uartCommunication/ikarus_communication.o: \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware.hpp \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_core.h \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_adresses.h \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_defs.h \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_settings.h \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IKARUS_sensors.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/ultrasonic.hpp \
@@ -67,6 +61,12 @@ firmware/uartCommunication/ikarus_communication.o: \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_core.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_adresses.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_defs.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_settings.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp \
  ../Core/Inc/main.h \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/MotorController.hpp \
@@ -112,12 +112,6 @@ firmware/uartCommunication/ikarus_communication.o: \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware.hpp:
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_core.h:
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_adresses.h:
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_defs.h:
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_settings.h:
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IKARUS_sensors.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/ultrasonic.hpp:
@@ -143,6 +137,12 @@ firmware/uartCommunication/ikarus_communication.o: \
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_core.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_adresses.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_defs.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_settings.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp:
 ../Core/Inc/main.h:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/MotorController.hpp:

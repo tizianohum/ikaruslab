@@ -1,11 +1,11 @@
-/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp:29:7:bool Controller::getArmedStatus()	1
-../firmware/firmware.cpp:37:6:void firmware()	1
-../firmware/firmware.cpp:41:6:void start_firmware_task(void*)	1
-../firmware/firmware.cpp:47:1:IKARUS_Firmware::IKARUS_Firmware()	1
-../firmware/firmware.cpp:51:6:void IKARUS_Firmware::helperTask()	5
-../firmware/firmware.cpp:96:19:HAL_StatusTypeDef IKARUS_Firmware::init()	1
-../firmware/firmware.cpp:139:19:HAL_StatusTypeDef IKARUS_Firmware::start()	1
-../firmware/firmware.cpp:159:6:void IKARUS_Firmware::task()	10
-../firmware/firmware.cpp:220:6:void start_firmware_control_task(void*)	1
-../firmware/firmware.cpp:223:1:void __static_initialization_and_destruction_0()	1
-../firmware/firmware.cpp:223:1:cpp)	1
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp:33:7:bool Controller::getArmedStatus()	1
+../firmware/firmware.cpp:35:6:void firmware()	1
+../firmware/firmware.cpp:39:6:void start_firmware_task(void*)	1
+../firmware/firmware.cpp:45:1:IKARUS_Firmware::IKARUS_Firmware()	1
+../firmware/firmware.cpp:49:6:void IKARUS_Firmware::helperTask()	5
+../firmware/firmware.cpp:93:19:HAL_StatusTypeDef IKARUS_Firmware::init()	1
+../firmware/firmware.cpp:132:19:HAL_StatusTypeDef IKARUS_Firmware::start()	1
+../firmware/firmware.cpp:150:6:void IKARUS_Firmware::task()	11
+../firmware/firmware.cpp:216:6:void start_firmware_control_task(void*)	1
+../firmware/firmware.cpp:219:1:void __static_initialization_and_destruction_0()	1
+../firmware/firmware.cpp:219:1:cpp)	1

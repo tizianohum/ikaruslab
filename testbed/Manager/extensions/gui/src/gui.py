@@ -1650,6 +1650,7 @@ class GUI:
 
             case 'emergency_stop':
                 self.callbacks.emergency_stop.call()
+                self.logger.debug("Emergency stop event received from GUI frontend")
             case _:
                 self.logger.warning(f"Unhandled GUI event: {data.get('event')} in message {message}")
 

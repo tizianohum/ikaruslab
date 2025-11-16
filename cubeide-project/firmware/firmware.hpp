@@ -36,6 +36,7 @@ class IKARUS_Firmware {
         //UltrasonicSensor ultrasonicSensor;
 private:
         //core_comm_UartInterface<8, 128> uart_if;
+        uint16_t samples_counter = 0;
 };
 
 void start_firmware_task(void *argument);

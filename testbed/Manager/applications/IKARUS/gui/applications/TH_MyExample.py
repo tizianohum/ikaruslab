@@ -37,6 +37,9 @@ from extensions.gui.src.lib.objects.python.video import VideoWidget
 from extensions.gui.src.lib.terminal.terminal_widget import TerminalWidget
 import random
 
+import communication
+
+com = communication.Communication()
 
 def main():
     # IP-Adresse holen (Server-Adresse)
@@ -58,16 +61,18 @@ def main():
     # --- Arming Toggle Button ---
     armed_state = {"armed": False}
 
-    arming_button = Button(widget_id='arming_btn', text='not armed')
-    page.addWidget(arming_button, width=5, height=5, row=1, column=1)
+    arming_button = Button(widget_id='arming_btn', text='not armed', color=[0.5, 0.5, 0, 1])
+    page.addWidget(arming_button, width=5, height=5, row=1, column=23)
 
     def toggle_arming(*a, **k):
         armed_state["armed"] = not armed_state["armed"]
         if armed_state["armed"]:
-            arming_button.updateConfig(text='ARMED', color=[1, 0, 0, 1])
+            arming_button.updateConfig(text='System is ARMED', color=[1, 0, 0, 1])
+            com.send_arming(True)
             print("System armed!")
         else:
-            arming_button.updateConfig(text='not armed', color=[0.8, 0.8, 0.8, 1])
+            arming_button.updateConfig(text='System not armed', color=[0.5, 0.5, 0, 1])
+            com.send_arming(False)
             print("System disarmed.")
 
     arming_button.callbacks.click.register(toggle_arming)
@@ -76,67 +81,165 @@ def main():
                            max_value=1,
                            increment=0.1,
                            value=0.5,
-                           color=random_color_from_palette('dark'),
+                           color=random_color_from_palette('bright'),
                            continuousUpdates=True,
                            automaticReset=0.5)
     page.addWidget(slider1, height=2, width=5)
+
+    def on_slider1_change(value, *a, **k):
+        print(f"Slider 1 value changed to: {value}")
+
+    slider1.callbacks.value_changed.register(on_slider1_change)
     slider1_2 = SliderWidget(widget_id='slider1u2', min_value=0,
                            max_value=1,
                            increment=0.1,
                            value=0.5,
-                           color=random_color_from_palette('dark'),
+                           color=random_color_from_palette('bright'),
                            continuousUpdates=True,
                            automaticReset=0.5)
     page.addWidget(slider1_2, height=2, width=5, row=3)
 
-    slider2 = SliderWidget(widget_id='slider2',
-                           min_value=0,
-                           max_value=100,
+    slider_roll = SliderWidget(widget_id='roll',
+                           min_value=-45,
+                           max_value=45,
                            increment=0.1,
-                           value=20,
-                           color=random_color_from_palette('dark'),
+                           value=0,
+                           color=[0, 0, 1, 1],
                            direction='vertical',
-                           ticks=[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100], )
+                           ticks=list(range(-45, 46, 5)), )
 
-    page.addWidget(slider2, height=6, width=2, column=1, row=8)
+    page.addWidget(slider_roll, height=6, width=2, column=1, row=8)
+    def on_roll_change(value, *a, **k):
+        com.send_roll(value)
+        print(f"roll value changed to: {value}")
+
+    slider_roll.callbacks.value_changed.register(on_roll_change)
+
+    slider_pitch = SliderWidget(widget_id='pitch',
+                           min_value=-45,
+                           max_value=45,
+                           increment=0.1,
+                           value=0,
+                           color=[0.5, 0, 0.5, 1],
+                           direction='vertical',
+                           ticks=list(range(-45, 46, 5)), )
+
+    page.addWidget(slider_pitch, height=6, width=2, column=3, row=8)
+    def on_pitch_change(value, *a, **k):
+        com.send_pitch(value)
+        print(f"pitch value changed to: {value}")
+
+    slider_pitch.callbacks.value_changed.register(on_pitch_change)
+
+    slider_yaw = SliderWidget(widget_id='yaw',
+                           min_value=-180,
+                           max_value=180,
+                           increment=0.1,
+                           value=0,
+                           color=[0, 1, 0, 1],
+                           direction='vertical',
+                           ticks=list(range(-180, 181, 45)), )
+
+    page.addWidget(slider_yaw, height=6, width=2, column=5, row=8)
+    def on_yaw_change(value, *a, **k):
+        com.send_yaw(value)
+        print(f"yaw value changed to: {value}")
+
+    slider_yaw.callbacks.value_changed.register(on_yaw_change)
+
+
+    ### Motor Thrust Control ###
+    # Slider für Motoren
+    motor_colors = [
+        [1, 0, 0, 1],  # Rot
+        [0, 1, 0, 1],  # Grün
+        [0, 0, 1, 1],  # Blau
+        [1, 1, 0, 1]  # Gelb
+    ]
+
+    motor_sliders = []
+    for i, color in enumerate(motor_colors):
+        motor_slider = SliderWidget(
+            widget_id=f'motor_{i + 1}',
+            min_value=0,
+            max_value=2000,
+            increment=10,
+            value=0,
+            color=color,
+            direction='vertical',
+            ticks=list(range(0, 2000, 100)),
+        )
+        page.addWidget(motor_slider, height=6, width=2, column=10 + i * 2, row=8)
+
+        def on_motor_change(value, motor_id=i + 1, *a, **k):
+            if motor_id == 1:
+                com.send_motor1(value)
+            elif motor_id == 2:
+                com.send_motor2(value)
+            elif motor_id == 3:
+                com.send_motor3(value)
+            elif motor_id == 4:
+                com.send_motor4(value)
+            print(f"Motor {motor_id} thrust changed to: {value}")
+
+        motor_slider.callbacks.value_changed.register(on_motor_change)
+        motor_sliders.append(motor_slider)
+
     # Plots
 
-    pw1 = RT_Plot_Widget(widget_id="pw1",
-                         title='Plot 11',
-                         use_local_time=True,
-                         x_axis_config={
-                             'window_time': 15
-                         }
-                         )
+    pw1 = RT_Plot_Widget(
+        widget_id="pw1",
+        title='Roll / Pitch / Yaw',
+        use_local_time=True,
+        x_axis_config={
+            'window_time': 15
+        }
+    )
 
-    y_axis_1 = Y_Axis(id="y_axis_1",
-                      label='Axis 1',
-                      min=-10,
-                      max=10,
-                      grid=True
-                      )
+    # Eine gemeinsame Y-Achse für alle drei Werte
+    y_axis_1 = Y_Axis(
+        id="y_axis_1",
+        label='Angle [°]',
+        min=-15,
+        max=15,
+        grid=True
+    )
 
     pw1.plot.add_y_axis(y_axis_1)
-    ds1 = TimeSeries(id="ds1",
-                     y_axis="y_axis_1",
-                     name='Data 1',
-                     color=random_color_from_palette('pastel'))
 
-    pw1.plot.add_timeseries(ds1)
+    # --- TimeSeries ---
+    ds_roll = TimeSeries(
+        id="roll",
+        y_axis="y_axis_1",
+        name='Roll',
+        color=random_color_from_palette('pastel')
+    )
+    pw1.plot.add_timeseries(ds_roll)
 
-    ds2 = TimeSeries(id="ds2",
-                     y_axis="y_axis_1",
-                     name='Data 2',
-                     color=random_color_from_palette('pastel'))
+    ds_pitch = TimeSeries(
+        id="pitch",
+        y_axis="y_axis_1",
+        name='Pitch',
+        color=random_color_from_palette('pastel')
+    )
+    pw1.plot.add_timeseries(ds_pitch)
 
-    pw1.plot.add_timeseries(ds2)
+    ds_yaw = TimeSeries(
+        id="yaw",
+        y_axis="y_axis_1",
+        name='Yaw',
+        color=random_color_from_palette('pastel')
+    )
+    pw1.plot.add_timeseries(ds_yaw)
 
-    def test_remove_timeseries():
-        pw1.plot.remove_timeseries(ds2)
 
-    setTimeout(test_remove_timeseries, 4)
 
-    page.addWidget(pw1, width=20, height=10, row=1, column=31)
+    # def test_remove_timeseries():
+    #     pw1.plot.remove_timeseries(ds_roll)
+    #
+    # setTimeout(test_remove_timeseries, 4)
+
+    page.addWidget(pw1, width=15, height=8, row=11, column=36)
 
 
 
@@ -145,6 +248,9 @@ def main():
     # Endlosschleife, damit das Programm nicht beendet wird
     try:
         while True:
+            ds_roll.set_value(com.roll)
+            ds_pitch.set_value(com.pitch)
+            ds_yaw.set_value(com.yaw)
             time.sleep(1)
     except KeyboardInterrupt:
         print("GUI beendet.")

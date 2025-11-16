@@ -11,10 +11,14 @@ typedef struct controller_config_t {
 
 // Inputs from the Controller
 typedef struct ikarus_control_external_input_t {
-	uint32_t thrust;
-	uint32_t roll;
-	uint32_t pitch;
-	uint32_t yaw;
+	uint32_t thrust1;
+	uint32_t thrust2;
+	uint32_t thrust3;
+	uint32_t thrust4;
+
+	float roll;
+	float pitch;
+	float yaw;
 } ikarus_control_external_input_t;
 
 class Controller {
@@ -27,6 +31,12 @@ public:
 	bool getButtonState(void);
 	void setArmedStatus(bool status) { armed = status; }
 	bool getArmedStatus(void){return armed;}
+
+	void setPitch(float pitch) { _inputs.pitch = pitch; }
+	void setRoll(float roll) { _inputs.roll = roll; }
+	void setYaw(float yaw) { _inputs.yaw = yaw; }
+
+
 	ikarus_control_external_input_t getControlInputs();
 
 

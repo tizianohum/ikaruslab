@@ -225,7 +225,7 @@ static void UartTxTask(void *argument)
     {
         if (osMessageQueueGet(uartTxQueueHandle, msg, nullptr, osWaitForever) == osOK)
         {
-            HAL_UART_Transmit_DMA(&huart7, (uint8_t *)msg, strlen(msg));
+            HAL_UART_Transmit_DMA(&huart7, (uint8_t *)msg, 104);
             osThreadFlagsWait(0x01, osFlagsWaitAny, osWaitForever);
         }
     }
