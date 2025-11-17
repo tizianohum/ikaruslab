@@ -63,6 +63,7 @@ IKARUS_MSG_MOTOR4 = 8
 
 IKARUS_MSG_SAMPLE_UPDATE = 10
 
+IKARUS_MAG_CALIBRATE = 50
 
 # ============================================================
 #                     COMMUNICATION-CLASS
@@ -86,46 +87,50 @@ class Communication:
     from collections import namedtuple
     import time
 
-
     def _rx_loop(self):
-        """Thread zum Lesen kompletter UART-Pakete (104 Bytes) ab Startbyte 0xAA."""
+        """Thread zum Lesen kompletter UART-Pakete oder Textzeilen."""
         PACKET_LENGTH = 104
-        TIMEOUT = 0.05  # Timeout für fragmentierte Pakete
-
-        buffer = bytearray()
+        TIMEOUT = 0.05
 
         while True:
             try:
-                # 1. Lese Byte für Byte, bis Startbyte 0xAA gefunden ist
-                while True:
-                    byte = self.ser.read(1)
-                    if not byte:
-                        continue
-                    if byte[0] == 0xAA:
-                        buffer = bytearray(byte)  # Startbyte ins Paket
-                        break
+                byte = self.ser.read(1)
+                if not byte:
+                    continue
 
-                # 2. Lese die restlichen Bytes bis zur vollen Paketlänge
-                start_time = time.time()
-                while len(buffer) < PACKET_LENGTH:
-                    chunk = self.ser.read(PACKET_LENGTH - len(buffer))
-                    if chunk:
-                        buffer.extend(chunk)
-                        start_time = time.time()
-                    elif (time.time() - start_time) > TIMEOUT:
-                        print("Timeout beim Lesen des Pakets")
-                        buffer = bytearray()
-                        break
+                # --- Fall: Startbyte eines Binärpakets ---
+                if byte[0] == 0xAA:
+                    buffer = bytearray(byte)
+                    start_time = time.time()
 
-                if len(buffer) == PACKET_LENGTH:
-                    #print(f"Empfangenes Paket (Hex): {buffer.hex()}")
+                    while len(buffer) < PACKET_LENGTH:
+                        chunk = self.ser.read(PACKET_LENGTH - len(buffer))
+                        if chunk:
+                            buffer.extend(chunk)
+                            start_time = time.time()
+                        elif time.time() - start_time > TIMEOUT:
+                            print("Timeout beim Lesen des Pakets")
+                            break
 
-                    # 3. Payload extrahieren (angenommen Header 3 Bytes: Start, Type, Length)
-                    payload_len = buffer[2]
-                    if payload_len >= 12:
-                        payload_bytes = buffer[3:3 + 12]  # erste 3 floats
-                        self.pitch, self.roll, self.yaw = struct.unpack('<fff', payload_bytes)
-                        print("→ Empfangen: Pitch =", self.pitch, "Roll =", self.roll, "Yaw =", self.yaw)
+                    if len(buffer) == PACKET_LENGTH:
+                        payload_len = buffer[2]
+                        if payload_len >= 12:
+                            payload = buffer[3:3 + 12]
+                            self.pitch, self.roll, self.yaw = struct.unpack('<fff', payload)
+                            print("→ Pitch =", self.pitch, "Roll =", self.roll, "Yaw =", self.yaw)
+
+                    continue  # WICHTIG: zurück zum Anfang
+
+                # --- Fall: KEIN Startbyte ---
+                # Wir prüfen, ob das Byte ASCII-Text sein kann (>=32 & <=126 oder CR/LF)
+                if 32 <= byte[0] <= 126 or byte in (b'\n', b'\r'):
+                    # Wir behandeln das als Textzeile:
+                    line = byte + self.ser.readline()
+                    print("Text:", line.decode(errors='replace').rstrip())
+                else:
+                    # Binäre Noise → einfach ignorieren, NICHT als Text ausgeben
+                    # (Sonst zerstören wir die Suche nach AA)
+                    pass
 
             except serial.SerialException:
                 print("UART geschlossen.")
@@ -198,6 +203,10 @@ class Communication:
         pkt = self._send_message(IKARUS_MSG_YAW, payload)
         print(f"→ Gesendet: Yaw = {value} (Paketgröße {len(pkt)} Bytes)")
 
+    def send_mag_calibration(self):
+        payload = struct.pack("<f", 0)
+        pkt = self._send_message(IKARUS_MAG_CALIBRATE, payload)
+        print(f"→ Gesendet: Mag Calibrate (Paketgröße {len(pkt)} Bytes)")
 
 # ============================================================
 #                 Beispiel-Nutzung

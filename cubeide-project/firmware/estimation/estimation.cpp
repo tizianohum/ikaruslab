@@ -20,7 +20,7 @@ static const osThreadAttr_t estimation_task_attributes = {
 IKARUS_Estimation::IKARUS_Estimation() :
 		vqf(IKARUS_ESTIMATION_TS) {
 	this->vqf.setTauAcc(0.5);
-			this->vqf.setTauMag(0.01);
+			this->vqf.setTauMag(0.9);
 
 }
 

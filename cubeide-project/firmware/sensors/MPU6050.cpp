@@ -75,9 +75,9 @@ void MPU6050::ReadAll(MPU6050_Raw3Axis& accel, MPU6050_Raw3Axis& gyro) {
 
 void MPU6050::Convert(const MPU6050_Raw3Axis& accel_raw, const MPU6050_Raw3Axis& gyro_raw,
                       MPU6050_Scaled3Axis& accel_g, MPU6050_Scaled3Axis& gyro_dps) {
-    accel_g.x = (accel_raw.x - _accOffset.x) / _acc_sens;
-    accel_g.y = (accel_raw.y - _accOffset.y) / _acc_sens;
-    accel_g.z = (accel_raw.z - _accOffset.z) / _acc_sens;
+    accel_g.x = (accel_raw.x - _accOffset.x) / _acc_sens *9.81;
+    accel_g.y = (accel_raw.y - _accOffset.y) / _acc_sens*9.81;
+    accel_g.z = (accel_raw.z - _accOffset.z) / _acc_sens*9.81;
 
     gyro_dps.x = (gyro_raw.x - _gyroOffset.x) / _gyro_sens;
     gyro_dps.y = (gyro_raw.y - _gyroOffset.y) / _gyro_sens;

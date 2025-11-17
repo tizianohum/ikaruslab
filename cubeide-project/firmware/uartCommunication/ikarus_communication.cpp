@@ -255,6 +255,10 @@ case IKARUS_MSG_MOTOR4: {
 	break;
 }
 
+case IKARUS_MAG_CALIBRATE: {
+	ikarus_firmware.sensors.gy271.calibrate(500, 20);
+}
+
 	// =========================================================
 	// ================ UNBEKANNTER TYP ========================
 	// =========================================================

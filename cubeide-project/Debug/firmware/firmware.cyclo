@@ -2,7 +2,7 @@
 ../firmware/firmware.cpp:35:6:void firmware()	1
 ../firmware/firmware.cpp:39:6:void start_firmware_task(void*)	1
 ../firmware/firmware.cpp:45:1:IKARUS_Firmware::IKARUS_Firmware()	1
-../firmware/firmware.cpp:49:6:void IKARUS_Firmware::helperTask()	5
+../firmware/firmware.cpp:49:6:void IKARUS_Firmware::helperTask()	7
 ../firmware/firmware.cpp:93:19:HAL_StatusTypeDef IKARUS_Firmware::init()	1
 ../firmware/firmware.cpp:132:19:HAL_StatusTypeDef IKARUS_Firmware::start()	1
 ../firmware/firmware.cpp:150:6:void IKARUS_Firmware::task()	11

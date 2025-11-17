@@ -76,6 +76,14 @@ def main():
             print("System disarmed.")
 
     arming_button.callbacks.click.register(toggle_arming)
+
+    mag_calibrate_button = Button(widget_id='mag_cal_btn', text='Calibrate Magnetometer', color=[0, 0.5, 0.5, 1])
+    page.addWidget(mag_calibrate_button, width=5, height=2, row=7, column=23)
+    def calibrate_magnetometer(*a, **k):
+        com.send_mag_calibration()
+        print("Magnetometer calibration command sent.")
+
+    mag_calibrate_button.callbacks.click.register(calibrate_magnetometer)
     # Sliders
     slider1 = SliderWidget(widget_id='slider1', min_value=0,
                            max_value=1,

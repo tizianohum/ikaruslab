@@ -45,7 +45,35 @@ firmware/sensors/GY271.o: ../firmware/sensors/GY271.cpp \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_core.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_adresses.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_defs.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_settings.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IKARUS_sensors.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/ultrasonic.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/mpu6050.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/GY271.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160_defs.h \
+ ../Core/Inc/spi.h ../Core/Inc/main.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_c.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/core_bytes.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp \
+ ../Core/Inc/main.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/MotorController.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/Motor.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/dshot.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/MPU6050.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_communication.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/uart_task.h
 ../firmware/sensors/GY271.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
@@ -93,3 +121,32 @@ firmware/sensors/GY271.o: ../firmware/sensors/GY271.cpp \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_core.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_adresses.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_defs.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_settings.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IKARUS_sensors.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/ultrasonic.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/mpu6050.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/GY271.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/IMU/bmi160_defs.h:
+../Core/Inc/spi.h:
+../Core/Inc/main.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/firmware_c.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/core_bytes.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp:
+../Core/Inc/main.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/MotorController.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/Motor.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/dshot.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/sensors/MPU6050.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/estimation.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_communication.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/uart_task.h:

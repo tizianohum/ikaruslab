@@ -60,14 +60,14 @@ void IKARUS_Firmware::helperTask() {
 		if (result == HAL_OK) {
 			uint8_t test = 1;
 		}
-//	        else if (result == HAL_BUSY) {
-//	            // Bus hängt, resetten
-//	        	if (__HAL_I2C_GET_FLAG(&hi2c2, I2C_FLAG_BUSY)) {
-//	        	        __HAL_I2C_DISABLE(&hi2c2);
-//	        	        HAL_Delay(1);
-//	        	        __HAL_I2C_ENABLE(&hi2c2);
-//	        	    }
-//	        		        }
+	        else if (result == HAL_BUSY) {
+	            // Bus hängt, resetten
+	        	if (__HAL_I2C_GET_FLAG(&hi2c2, I2C_FLAG_BUSY)) {
+	        	        __HAL_I2C_DISABLE(&hi2c2);
+	        	        HAL_Delay(1);
+	        	        __HAL_I2C_ENABLE(&hi2c2);
+	        	    }
+	        		        }
 
 		HAL_Delay(2);
 	}
@@ -190,7 +190,7 @@ void IKARUS_Firmware::task() {
             this->motorController.update();
 
             this->samples_counter++;
-            if (this->samples_counter >= 10) {
+            if (this->samples_counter >= 3) {
                 this->samples_counter = 0;
 
                 comm.sendSample(&estimation.state);

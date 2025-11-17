@@ -8,6 +8,9 @@
 #include "GY271.h"
 #include "cmsis_os.h"
 #include "math.h"
+#include "firmware.hpp"
+
+extern IKARUS_Firmware ikarus_firmware;
 
 GY271::GY271() {
 }
@@ -109,8 +112,8 @@ void GY271::calibrate(uint16_t samples, uint16_t delay_ms) {
     float minX =  1e6, minY =  1e6, minZ =  1e6;
     float maxX = -1e6, maxY = -1e6, maxZ = -1e6;
 
-
-
+    ikarus_firmware.comm.send("Starting magnetometer calibration. Please rotate the sensor in all directions.");
+osDelay(1000);
     for (uint16_t i = 0; i < samples; i++) {
         read();
 
@@ -133,5 +136,7 @@ void GY271::calibrate(uint16_t samples, uint16_t delay_ms) {
     cal.scaleY = (maxY - minY) / 2.0f;
     cal.scaleZ = (maxZ - minZ) / 2.0f;
     cal.avgScale = (cal.scaleX + cal.scaleY + cal.scaleZ) / 3.0f;
+
+    ikarus_firmware.comm.send("Magnetometer calibration completed.");
 
 }
