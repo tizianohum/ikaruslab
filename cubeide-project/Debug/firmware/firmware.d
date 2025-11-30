@@ -67,7 +67,12 @@ firmware/firmware.o: ../firmware/firmware.cpp ../Core/Inc/main.h \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/dshot.hpp \
  ../firmware/sensors/MPU6050.h ../firmware/estimation/estimation.hpp \
  ../firmware/uartCommunication/ikarus_communication.h \
- ../firmware/uartCommunication/uart_task.h ../firmware/firmware_c.h
+ ../firmware/uartCommunication/uart_task.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/logging/logging_sample.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp \
+ ../firmware/logging/logger.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_communication.h \
+ ../firmware/logging/logging_sample.h ../firmware/firmware_c.h
 ../Core/Inc/main.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
@@ -143,4 +148,9 @@ firmware/firmware.o: ../firmware/firmware.cpp ../Core/Inc/main.h \
 ../firmware/estimation/estimation.hpp:
 ../firmware/uartCommunication/ikarus_communication.h:
 ../firmware/uartCommunication/uart_task.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/logging/logging_sample.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp:
+../firmware/logging/logger.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_communication.h:
+../firmware/logging/logging_sample.h:
 ../firmware/firmware_c.h:

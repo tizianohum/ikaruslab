@@ -49,6 +49,7 @@ firmware/Control \
 firmware/Controller \
 firmware/estimation \
 firmware \
+firmware/logging \
 firmware/motors \
 firmware/sensors \
 firmware/sensors/IMU \

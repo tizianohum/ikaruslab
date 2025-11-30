@@ -7,17 +7,16 @@
 #include "IMU/bmi160.h"
 
 typedef struct ikarus_sensors_data_t {
-    float accX;
-    float accY;
-    float accZ;
-    float gyrX;
-    float gyrY;
-    float gyrZ;
+//    float accX;
+//    float accY;
+//    float accZ;
+//    float gyrX;
+//    float gyrY;
+//    float gyrZ;
 	bmi160_acc acc;
 	bmi160_gyr gyr;
-    float magX;
-    float magY;
-    float magZ;
+	gy271_mag mag;
+	float ultrasonic_front_distance;
 //    float baro;
 } ikarus_sensors_data_t;
 

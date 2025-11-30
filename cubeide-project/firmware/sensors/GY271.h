@@ -98,16 +98,16 @@ typedef struct {
     float x;
     float y;
     float z;
-} gy271_Scaled3Axis;
+} gy271_mag;
 
 class GY271 {
 public:
     GY271();
     void init(gy271_config_t *config);
     void read();
-    float mx, my, mz;
     float getScaleForRange(qmc_range_t range);
     void calibrate(uint16_t samples, uint16_t delay_ms);
+    gy271_mag getMag() { return _mag; }
 
     gy271_calibration_t cal = {
         .offsetX   =  0.0244333334f,
@@ -119,6 +119,7 @@ public:
         .avgScale  =  0.0231777783f
     };
 private:
+    gy271_mag _mag;
     float heading = 0.0f;
     float lsb_per_gauss= 0;
     gy271_config_t config;

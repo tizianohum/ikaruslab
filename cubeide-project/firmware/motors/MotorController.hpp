@@ -3,6 +3,8 @@
 #include "Motor.hpp"
 #include "cmsis_os.h"
 
+#define MAX_THRUST 400
+
 typedef struct motor_controller_config_t {
 	TIM_HandleTypeDef *htim1;
 	uint32_t channel_1;
@@ -23,11 +25,16 @@ public:
 	void update();
 	void setMotorSignals(uint16_t s1, uint16_t s2, uint16_t s3, uint16_t s4);
 	void setThrust(float t1, float t2, float t3, float t4);
-	void setThrust1(uint32_t thrust) { thrust1 = thrust; }
-	void setThrust2(uint32_t thrust) { thrust2 = thrust;}
-	void setThrust3(uint32_t thrust) { thrust3 = thrust; }
-	void setThrust4(uint32_t thrust) { thrust4 = thrust;}
+	void setThrust1(uint32_t thrust);
 
+	void setThrust2(uint32_t thrust);
+
+	void setThrust3(uint32_t thrust);
+
+	void setThrust4(uint32_t thrust);
+
+	void beepMotor(uint8_t motorIndex);
+	void reverseMotorSpin(uint8_t motorIndex);
 
 
 	void updateAllMotors();

@@ -65,7 +65,14 @@ firmware/uartCommunication/uart_task.o: \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/core_bytes.h \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp \
  /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp \
- /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/logging/logging_sample.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp \
+ ../Core/Inc/main.h \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/MotorController.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/Motor.hpp \
+ /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/dshot.hpp
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -133,3 +140,10 @@ firmware/uartCommunication/uart_task.o: \
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/vqf.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/estimation/basicvqf.hpp:
 /Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/uartCommunication/ikarus_protocoll.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/logging/logging_sample.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Controller/Controller.hpp:
+../Core/Inc/main.h:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/MotorController.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/motors/Motor.hpp:
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/utils/dshot.hpp:

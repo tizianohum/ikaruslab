@@ -47,7 +47,9 @@ typedef enum {
 
 	IKARUS_MSG_SAMPLE_UPDATE = 10,
 
-	IKARUS_MAG_CALIBRATE =50
+	IKARUS_MAG_CALIBRATE =50,
+
+	IKARUS_SPECIAL_COMMAND = 100,
 } ikarus_msg_type_t;
 
 typedef struct __attribute__((packed)) {

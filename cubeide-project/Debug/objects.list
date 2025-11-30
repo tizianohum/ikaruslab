@@ -53,6 +53,7 @@
 "./firmware/estimation/estimation.o"
 "./firmware/estimation/vqf.o"
 "./firmware/firmware.o"
+"./firmware/logging/logger.o"
 "./firmware/motors/Motor.o"
 "./firmware/motors/MotorController.o"
 "./firmware/sensors/GY271.o"

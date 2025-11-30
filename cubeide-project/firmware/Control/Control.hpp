@@ -39,13 +39,48 @@ typedef enum ikarus_control_status_t {
 
 
 
-typedef struct ikarus_control_output_t {
-	uint16_t omega1;
-	uint16_t omega2;
-	uint16_t omega3;
-	uint16_t omega4;
+typedef struct ikarus_control_outputs_t {
+	uint16_t thrust1;
+	uint16_t thrust2;
+	uint16_t thrust3;
+	uint16_t thrust4;
+} ikarus_control_outputs_t;
 
-} ikarus_control_output_t;
+typedef struct ikarus_control_params_t {
+
+    // --- Roll Controller (Angle) ---
+    float Kp_roll;   // proportional gain for roll angle
+    float Kd_roll;   // derivative gain (gyro-based)
+
+    // --- Pitch Controller (Angle) ---
+    float Kp_pitch;
+    float Kd_pitch;
+
+    // --- Yaw Controller (Angle or rate) ---
+    float Kp_yaw;
+    float Ki_yaw;    // optional, can be 0
+    float Kd_yaw;
+
+    float yaw_integrator;   // integrator storage
+    float yaw_i_limit;      // anti-windup limit
+
+    // --- Mixer Scaling ---
+    float mix_roll;   // scales roll control output -> motor delta
+    float mix_pitch;  // scales pitch control output -> motor delta
+    float mix_yaw;    // scales yaw control output -> motor delta
+
+    // --- Thrust Limits ---
+    uint16_t thrust_min;   // e.g. 47  (DShot300)
+    uint16_t thrust_max;   // e.g. 2048
+
+    // --- Collective Thrust ---
+    float base_thrust;     // 0..1 as normalized throttle input
+
+    // --- Optional Filters ---
+    float gyro_lpf_cutoff;   // low-pass filter for gyro [Hz]
+    float dterm_lpf_cutoff;  // low-pass for D-term
+
+} ikarus_control_params_t;
 
 class IKARUS_ControlManager{
 public:
@@ -60,6 +95,10 @@ public:
 
 	void update();
 
+	ikarus_control_outputs_t getOutputs(){
+        return this->_output;
+    }
+
 	uint8_t setMode(ikarus_control_mode_t mode);
 	ikarus_control_status_t getStatus();
 
@@ -70,7 +109,9 @@ public:
 	ikarus_control_configuratioin control_config;
 
 private:
-	ikarus_control_output_t _output;
+	ikarus_control_params_t params;
+
+	ikarus_control_outputs_t _output;
 	ikarus_estimation_state_t _dynamic_state;
 	ikarus_control_data_t _data;
 

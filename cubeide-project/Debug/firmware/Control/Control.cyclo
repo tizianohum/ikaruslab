@@ -1,4 +1,5 @@
 ../firmware/Control/Control.cpp:11:1:IKARUS_ControlManager::IKARUS_ControlManager()	1
 ../firmware/Control/Control.cpp:14:6:void IKARUS_ControlManager::init(ikarus_control_init_config_t)	1
 ../firmware/Control/Control.cpp:23:9:uint8_t IKARUS_ControlManager::start()	2
-../firmware/Control/Control.cpp:37:6:void IKARUS_ControlManager::update()	1
+../firmware/Control/Control.cpp:96:17:IKARUS_ControlManager::update()::<lambda(float)>	3
+../firmware/Control/Control.cpp:37:6:void IKARUS_ControlManager::update()	3

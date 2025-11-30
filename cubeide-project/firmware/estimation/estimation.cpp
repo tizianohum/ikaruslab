@@ -53,7 +53,7 @@ void IKARUS_Estimation::update() {
 //	vqf_real_t acc[3] = { data.accX, data.accY, data.accZ };
 	vqf_real_t gyr[3] = { data.gyr.x, data.gyr.y, data.gyr.z };
 	vqf_real_t acc[3] = { data.acc.x, data.acc.y, data.acc.z };
-	vqf_real_t mag[3] = { data.magY, -data.magX, data.magZ }; // verdrehte axhsen der sensoren
+	vqf_real_t mag[3] = { -data.mag.x -data.mag.z, -data.mag.y}; // verdrehte axhsen der sensoren
 
 	float norm = sqrtf(mag[0]*mag[0] + mag[1]*mag[1] + mag[2]*mag[2]);
 	if (norm > 1e-6f) {
@@ -94,6 +94,10 @@ void IKARUS_Estimation::update() {
     this->state.roll  = roll_deg;
     this->state.pitch = pitch_deg;
     this->state.yaw   = yaw_deg;
+    this->state.roll_dot  = data.gyr.x;
+    this->state.pitch_dot = data.gyr.y;
+    this->state.yaw_dot   = data.gyr.z;
+
 
     // --- In Ringbuffer schreiben ---
     this->orientation_buffer[this->buffer_index].roll  = roll_deg;

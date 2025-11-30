@@ -15,6 +15,7 @@ RM := rm -rf
 -include firmware/sensors/IMU/subdir.mk
 -include firmware/sensors/subdir.mk
 -include firmware/motors/subdir.mk
+-include firmware/logging/subdir.mk
 -include firmware/estimation/subdir.mk
 -include firmware/Controller/subdir.mk
 -include firmware/Control/subdir.mk

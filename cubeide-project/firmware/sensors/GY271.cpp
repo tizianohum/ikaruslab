@@ -72,12 +72,12 @@ void GY271::read() {
 		z = (z - cal.offsetZ) / cal.scaleZ * cal.avgScale;
 	}
 
-	mx = x;
-	my = y;
-	mz = z;
+	_mag.x = x;
+	_mag.y = y;
+	_mag.z = z;
 
     // Arctan2 gibt den Winkel im Bogenmaß zurück (-π .. +π)
-    heading = atan2(my, mx);
+    heading = atan2(_mag.y, _mag.x);
 
     // In Grad umrechnen
     heading = heading * 180.0f / M_PI;
@@ -117,13 +117,13 @@ osDelay(1000);
     for (uint16_t i = 0; i < samples; i++) {
         read();
 
-        if (mx < minX) minX = mx;
-        if (my < minY) minY = my;
-        if (mz < minZ) minZ = mz;
+        if (_mag.x < minX) minX = _mag.x;
+        if (_mag.y < minY) minY = _mag.y;
+        if (_mag.z < minZ) minZ = _mag.z;
 
-        if (mx > maxX) maxX = mx;
-        if (my > maxY) maxY = my;
-        if (mz > maxZ) maxZ = mz;
+        if (_mag.x > maxX) maxX = _mag.x;
+        if (_mag.y > maxY) maxY = _mag.y;
+        if (_mag.z > maxZ) maxZ = _mag.z;
 
         osDelay(delay_ms);
     }

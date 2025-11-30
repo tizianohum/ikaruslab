@@ -48,24 +48,14 @@ void IKARUS_Sensors::update() {
 //    this->gyrZ = gyr.z;
 	this->_readImu();
 
-
     this->gy271.read();
-
-    this->magX = this->gy271.mx;
-    this->magY = this->gy271.my;
-    this->magZ = this->gy271.mz;
 }
 
 ikarus_sensors_data_t IKARUS_Sensors::getData() {
-	_data.accX = this->accX;
-	_data.accY = this->accY;
-	_data.accZ = this->accZ;
-	_data.gyrX = this->gyrX;
-	_data.gyrY = this->gyrY;
-	_data.gyrZ = this->gyrZ;
-	_data.magX = this->magX;
-	_data.magY = this->magY;
-	_data.magZ = this->magZ;
+	_data.acc = this->imu.acc;
+	_data.gyr = this->imu.gyr;
+	_data.mag = this->gy271.getMag();
+	_data.ultrasonic_front_distance = this->ultrasonicSensor.getDistance();
 	//data.baro = this->baro; // Falls Barometerdaten vorhanden sind
 	return _data;
 }

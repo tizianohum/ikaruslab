@@ -10,6 +10,7 @@
 #include "sensors/MPU6050.h"
 #include "estimation/estimation.hpp"
 #include "uartCommunication/ikarus_communication.h"
+#include "logging/logger.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,12 +25,15 @@ class IKARUS_Firmware {
         void helperTask();
         void task();
 
+
+
         IKARUS_CommunicationManager comm;
         IKARUS_ControlManager controlManager;
         IKARUS_MotorController motorController;
         IKARUS_Sensors sensors;
         Controller controller;
         IKARUS_Estimation estimation;
+        IKARUS_Logger logger;
 
         ikarus_firmware_state_t firmware_state = IKARUS_FIRMWARE_STATE_UNARMED;
 

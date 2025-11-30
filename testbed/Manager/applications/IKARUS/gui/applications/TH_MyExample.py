@@ -5,6 +5,7 @@ import time
 
 import numpy as np
 
+from applications.IKARUS.gui.applications.communication import MOTOR1_BEEP
 from core.utils.colors import random_color, random_color_from_palette
 from core.utils.plotting import run_periodic, safe_close, new_figure_agg, quick_line_plot_data_uri, fig_to_data_uri, \
     save_figure
@@ -84,6 +85,41 @@ def main():
         print("Magnetometer calibration command sent.")
 
     mag_calibrate_button.callbacks.click.register(calibrate_magnetometer)
+
+    motor_beep_buttons = []
+    for i in range(1, 5):
+        motor_beep_button = Button(
+            widget_id=f'motor{i}_beep_btn',
+            text=f'Motor {i} Beep',
+            color=[0.5, 0, 0.5, 1]
+        )
+        page.addWidget(motor_beep_button, width=5, height=2, row=8 + i * 2, column=23)
+
+        def motor_beep(*a, motor_id=i, **k):
+            com.send_special_command(motor_id)
+            print(f"Motor {motor_id} Beep command sent.")
+
+        motor_beep_button.callbacks.click.register(motor_beep)
+        motor_beep_buttons.append(motor_beep_button)
+
+    # Buttons für "Reverse Spin"-Befehl
+    motor_reverse_spin_buttons = []
+    motor_reverse_spin_commands = [5, 6, 7, 8]  # Command IDs für Reverse Spin
+    for i, command_id in enumerate(motor_reverse_spin_commands, start=1):
+        motor_reverse_spin_button = Button(
+            widget_id=f'motor{i}_reverse_spin_btn',
+            text=f'Motor {i} Reverse Spin',
+            color=[0, 0.5, 0.5, 1]
+        )
+        page.addWidget(motor_reverse_spin_button, width=5, height=2, row=8 + i * 2, column=30)
+
+        def motor_reverse_spin(*a, cmd_id=command_id, **k):
+            com.send_special_command(cmd_id)
+            print(f"Motor {i} Reverse Spin command sent.")
+
+        motor_reverse_spin_button.callbacks.click.register(motor_reverse_spin)
+        motor_reverse_spin_buttons.append(motor_reverse_spin_button)
+
     # Sliders
     slider1 = SliderWidget(widget_id='slider1', min_value=0,
                            max_value=1,
@@ -240,6 +276,38 @@ def main():
     )
     pw1.plot.add_timeseries(ds_yaw)
 
+    # Plot für Ultraschall-Daten
+    pw2 = RT_Plot_Widget(
+        widget_id="pw2",
+        title='Ultrasonic Data',
+        use_local_time=True,
+        x_axis_config={
+            'window_time': 15
+        }
+    )
+
+    # Y-Achse für Ultraschall-Daten
+    y_axis_ultrasonic = Y_Axis(
+        id="y_axis_ultrasonic",
+        label='Distance [m]',
+        min=0,
+        max=100,
+        grid=True
+    )
+
+    pw2.plot.add_y_axis(y_axis_ultrasonic)
+
+    # TimeSeries für Ultraschall-Daten
+    ds_ultrasonic = TimeSeries(
+        id="ultrasonic",
+        y_axis="y_axis_ultrasonic",
+        name='Ultrasonic',
+        color=random_color_from_palette('pastel')
+    )
+    pw2.plot.add_timeseries(ds_ultrasonic)
+
+    # Plot-Widget zur Seite hinzufügen (über dem aktuellen Plot)
+    page.addWidget(pw2, width=15, height=8, row=3, column=36)
 
 
     # def test_remove_timeseries():
@@ -252,6 +320,7 @@ def main():
 
 
     # GUI starten
+    print("Done.")
     app.start()
     # Endlosschleife, damit das Programm nicht beendet wird
     try:
@@ -259,6 +328,7 @@ def main():
             ds_roll.set_value(com.roll)
             ds_pitch.set_value(com.pitch)
             ds_yaw.set_value(com.yaw)
+            ds_ultrasonic.set_value(com.ultrasonic)
             time.sleep(1)
     except KeyboardInterrupt:
         print("GUI beendet.")

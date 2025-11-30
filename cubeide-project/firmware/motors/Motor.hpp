@@ -16,9 +16,10 @@ public:
     void setSignal(uint16_t value);
     void updatePWM();  // Ruft prepare_dshot_buffer und HAL_TIM_PWM_Start_DMA auf
     void armingSequence();
-private:
     TIM_HandleTypeDef* _htim;
     uint32_t _channel;
+private:
+
     uint16_t _signal = {0};
     uint32_t _dshotBuffer[17] = {0};
 };

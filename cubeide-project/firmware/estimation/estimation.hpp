@@ -36,15 +36,18 @@ typedef struct ikarus_estimation_state_t {
 //	float x_dot;   // Velocity in x direction
 //	float y_dot;   // Velocity in y direction
 //	float z_dot;   // Velocity in z direction
-//	float roll_dot;  // Roll rate
-//	float pitch_dot; // Pitch rate
-//	float yaw_dot;   // Yaw rate
+	float roll_dot;  // Roll rate
+	float pitch_dot; // Pitch rate
+	float yaw_dot;   // Yaw rate
 } ikarus_estimation_state_t;
 
 typedef struct ikarus_estimation_config_t {
 	// Add configuration parameters as needed
 	IKARUS_Sensors *sensors;
 } ikarus_estimation_config_t;
+
+
+
 
 class IKARUS_Estimation {
 public:

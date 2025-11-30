@@ -59,15 +59,14 @@ void IKARUS_Firmware::helperTask() {
 
 		if (result == HAL_OK) {
 			uint8_t test = 1;
+		} else if (result == HAL_BUSY) {
+			// Bus hängt, resetten
+			if (__HAL_I2C_GET_FLAG(&hi2c2, I2C_FLAG_BUSY)) {
+				__HAL_I2C_DISABLE(&hi2c2);
+				HAL_Delay(1);
+				__HAL_I2C_ENABLE(&hi2c2);
+			}
 		}
-	        else if (result == HAL_BUSY) {
-	            // Bus hängt, resetten
-	        	if (__HAL_I2C_GET_FLAG(&hi2c2, I2C_FLAG_BUSY)) {
-	        	        __HAL_I2C_DISABLE(&hi2c2);
-	        	        HAL_Delay(1);
-	        	        __HAL_I2C_ENABLE(&hi2c2);
-	        	    }
-	        		        }
 
 		HAL_Delay(2);
 	}
@@ -96,9 +95,12 @@ HAL_StatusTypeDef IKARUS_Firmware::init() {
 	this->comm.init(ikarus_comm_config);
 	this->comm.send("Communication ready for commands"); // test communication
 
+	ikarus_logger_config_t logger_config = { .comm = &comm };
+	this->logger.init(logger_config);
+
 	motor_controller_config_t motorontrollerConfig = { .htim1 = &htim1,
 			.channel_1 = TIM_CHANNEL_1, .htim2 = &htim1, .channel_2 =
-					TIM_CHANNEL_4, .htim3 = &htim15, .channel_3 = TIM_CHANNEL_1,
+			TIM_CHANNEL_4, .htim3 = &htim15, .channel_3 = TIM_CHANNEL_1,
 			.htim4 = &htim4, .channel_4 = TIM_CHANNEL_3, };
 	this->motorController.init(&motorontrollerConfig);
 
@@ -149,68 +151,107 @@ HAL_StatusTypeDef IKARUS_Firmware::start() {
 
 void IKARUS_Firmware::task() {
 
-    while (true) {
+	while (true) {
 
-        switch (this->firmware_state) {
+		switch (this->firmware_state) {
 
-        case IKARUS_FIRMWARE_STATE_UNARMED: {
-            uint8_t status = 1;
+		case IKARUS_FIRMWARE_STATE_UNARMED: {
 
-            if (this->controller.getArmedStatus()) {
-                for (uint8_t i = 0; i < 160; i++) {
-                    if (!this->controller.getArmedStatus()) {
-                        status = 0;
-                        break;
-                    }
+			if (this->controller.special_command != 0) {
+				switch (this->controller.special_command) {
+				case MOTOR1_BEEP:
+					this->motorController.beepMotor(1);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR2_BEEP:
+					this->motorController.beepMotor(2);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR3_BEEP:
+					this->motorController.beepMotor(3);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR4_BEEP:
+					this->motorController.beepMotor(4);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR1_REVERSE_SPIN:
+					motorController.reverseMotorSpin(1);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR2_REVERSE_SPIN:
+					motorController.reverseMotorSpin(2);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR3_REVERSE_SPIN:
+					motorController.reverseMotorSpin(3);
+					this->controller.special_command = 0;
+					break;
+				case MOTOR4_REVERSE_SPIN:
+					motorController.reverseMotorSpin(4);
+					this->controller.special_command = 0;
+					break;
 
-                    this->motorController.update();
-                    osDelay(25);
-                }
+				}
+			}
 
-                if (status) {
-                    this->firmware_state = IKARUS_FIRMWARE_STATE_RUNNING;
-                    HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
-                }
-            }
+			uint8_t status = 1;
 
-            osDelay(25);
-            break;
-        }
+			if (this->controller.getArmedStatus()) {
+				for (uint8_t i = 0; i < 160; i++) {
+					if (!this->controller.getArmedStatus()) {
+						status = 0;
+						break;
+					}
 
-        case IKARUS_FIRMWARE_STATE_RUNNING: {
-            if (!this->controller.getArmedStatus()) {
-                this->firmware_state = IKARUS_FIRMWARE_STATE_UNARMED;
-                HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-                this->motorController.setThrust(0, 0, 0, 0);
-                osDelay(25);
-                break;
-            }
+					this->motorController.update();
+					osDelay(25);
+				}
 
-            this->controlManager.update();
-            this->motorController.update();
+				if (status) {
+					this->firmware_state = IKARUS_FIRMWARE_STATE_RUNNING;
+					HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+				}
+			}
 
-            this->samples_counter++;
-            if (this->samples_counter >= 3) {
-                this->samples_counter = 0;
+			osDelay(25);
+			break;
+		}
 
-                comm.sendSample(&estimation.state);
-            }
+		case IKARUS_FIRMWARE_STATE_RUNNING: {
+			if (!this->controller.getArmedStatus()) {
+				this->firmware_state = IKARUS_FIRMWARE_STATE_UNARMED;
+				HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+				this->motorController.setThrust(0, 0, 0, 0);
+				osDelay(25);
+				break;
+			}
 
-            // Wait until next cycle
-            osDelay(25);
-            break;
-        }
+			this->controlManager.update();
+			this->motorController.update();
 
-        case IKARUS_FIRMWARE_STATE_ERROR: {
-            //TODO
-            while (1) {
-                osDelay(1000);
-            }
-            break;
-        }
+			this->samples_counter++;
+			if (this->samples_counter >= 10) {
+				this->samples_counter = 0;
 
-        } // switch
-    } // while
+				this->logger.sendLog();
+			}
+
+			// Wait until next cycle
+			osDelay(25);
+			break;
+		}
+
+		case IKARUS_FIRMWARE_STATE_ERROR: {
+			//TODO
+			while (1) {
+				osDelay(1000);
+			}
+			break;
+		}
+
+		} // switch
+	} // while
 }
 
 void start_firmware_control_task(void *argument) {

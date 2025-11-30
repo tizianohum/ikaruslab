@@ -81,14 +81,14 @@ void IKARUS_CommunicationManager::sendBinary(const uint8_t *data, size_t len) {
 }
 
 void IKARUS_CommunicationManager::sendSample(
-		 ikarus_estimation_state_t *sample) {
+		 ikarus_log_data_t *sample) {
 	ikarus_message_t msg;
 	msg.start = 0xAA;
 	msg.msg_type = IKARUS_MSG_SAMPLE_UPDATE;    // e.g. IKARUS_MSG_ESTIMATION
-	msg.payload_length = sizeof(ikarus_estimation_state_t);
+	msg.payload_length = sizeof(ikarus_log_data_t);
 
 	// Copy binary state struct into payload
-	memcpy(msg.payload, sample, sizeof(ikarus_estimation_state_t));
+	memcpy(msg.payload, sample, sizeof(ikarus_log_data_t));
 
 	// Compute CRC over header (start, type, length) + payload
 	uint16_t crc = 0;
@@ -257,6 +257,14 @@ case IKARUS_MSG_MOTOR4: {
 
 case IKARUS_MAG_CALIBRATE: {
 	ikarus_firmware.sensors.gy271.calibrate(500, 20);
+	break;
+}
+case IKARUS_SPECIAL_COMMAND: {
+	uint16_t value;
+	memcpy(&value, msg->payload, sizeof(uint16_t));
+	ikarus_firmware.controller.special_command =value;
+	break;
+
 }
 
 	// =========================================================

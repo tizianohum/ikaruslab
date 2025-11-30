@@ -1,10 +1,11 @@
+../firmware/sensors/GY271.h:110:15:gy271_mag GY271::getMag()	48	static
 ../firmware/sensors/IKARUS_Sensors.cpp:7:1:IKARUS_Sensors::IKARUS_Sensors()	16	static
 ../firmware/sensors/IKARUS_Sensors.cpp:10:6:void IKARUS_Sensors::init(ultrasonic_config_t*, mpu6050_config_t*, gy271_config_t*)	72	static
 ../firmware/sensors/IKARUS_Sensors.cpp:27:6:void IKARUS_Sensors::start()	16	static
 ../firmware/sensors/IKARUS_Sensors.cpp:36:6:void IKARUS_Sensors::update()	16	static
-../firmware/sensors/IKARUS_Sensors.cpp:59:23:ikarus_sensors_data_t IKARUS_Sensors::getData()	24	static
-../firmware/sensors/IKARUS_Sensors.cpp:73:6:void IKARUS_Sensors::getAccelerometer(float&, float&, float&) const	24	static
-../firmware/sensors/IKARUS_Sensors.cpp:79:6:void IKARUS_Sensors::getGyroscope(float&, float&, float&) const	24	static
-../firmware/sensors/IKARUS_Sensors.cpp:85:7:float IKARUS_Sensors::getBarometer() const	16	static
-../firmware/sensors/IKARUS_Sensors.cpp:89:7:float IKARUS_Sensors::getUltrasonic()	16	static
-../firmware/sensors/IKARUS_Sensors.cpp:93:6:void IKARUS_Sensors::_readImu()	16	static
+../firmware/sensors/IKARUS_Sensors.cpp:54:23:ikarus_sensors_data_t IKARUS_Sensors::getData()	24	static
+../firmware/sensors/IKARUS_Sensors.cpp:63:6:void IKARUS_Sensors::getAccelerometer(float&, float&, float&) const	24	static
+../firmware/sensors/IKARUS_Sensors.cpp:69:6:void IKARUS_Sensors::getGyroscope(float&, float&, float&) const	24	static
+../firmware/sensors/IKARUS_Sensors.cpp:75:7:float IKARUS_Sensors::getBarometer() const	16	static
+../firmware/sensors/IKARUS_Sensors.cpp:79:7:float IKARUS_Sensors::getUltrasonic()	16	static
+../firmware/sensors/IKARUS_Sensors.cpp:83:6:void IKARUS_Sensors::_readImu()	16	static

@@ -7,6 +7,16 @@ import ctypes
 
 PAYLOAD_LENGTH = 100
 
+# === Special Command IDs ===
+MOTOR1_BEEP = 1
+MOTOR2_BEEP = 2
+MOTOR3_BEEP = 3
+MOTOR4_BEEP = 4
+MOTOR1_REVERSE_SPIN = 5
+MOTOR2_REVERSE_SPIN = 6
+MOTOR3_REVERSE_SPIN = 7
+MOTOR4_REVERSE_SPIN = 8
+
 # === Nachricht-Struktur (C-kompatibel) ===
 @dataclasses.dataclass
 class Message:
@@ -41,14 +51,71 @@ class MotorThrust(ctypes.Structure):
         ('motor3', ctypes.c_float),
         ('motor4', ctypes.c_float),
     ]
-class Sample(ctypes.Structure):
+class ikarus_control_external_input_t(ctypes.Structure):
     _pack_ = 1
     _fields_ = [
         ("roll", ctypes.c_float),
         ("pitch", ctypes.c_float),
         ("yaw", ctypes.c_float),
     ]
+class ikarus_estimation_state_t(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("roll", ctypes.c_float),
+        ("pitch", ctypes.c_float),
+        ("yaw", ctypes.c_float),
+        ("roll_dot", ctypes.c_float),
+        ("pitch_dot", ctypes.c_float),
+        ("yaw_dot", ctypes.c_float),
+    ]
+class ikarus_control_outputs_t(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("thrust1", ctypes.c_uint16),
+        ("thrust2", ctypes.c_uint16),
+        ("thrust3", ctypes.c_uint16),
+        ("thrust4", ctypes.c_uint16),
+    ]
+class bmi160_acc(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("x", ctypes.c_float),
+        ("y", ctypes.c_float),
+        ("z", ctypes.c_float),
+    ]
 
+class bmi160_gyro(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("x", ctypes.c_float),
+        ("y", ctypes.c_float),
+        ("z", ctypes.c_float),
+    ]
+
+class gy271_mag(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("x", ctypes.c_float),
+        ("y", ctypes.c_float),
+        ("z", ctypes.c_float),
+    ]
+class ikarus_sensors_data_t(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("acc", bmi160_acc),
+        ("gyr", bmi160_gyro),
+        ("mag", gy271_mag),
+        ("ultrasonic", ctypes.c_float),
+    ]
+
+class ikarus_log_data_t(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("sensors_data", ikarus_sensors_data_t),
+        ("estimation_state", ikarus_estimation_state_t),
+        ("control_outputs", ikarus_control_outputs_t),
+        ("control_inputs", ikarus_control_external_input_t),
+    ]
 # === Nachrichten-IDs (müssen zum STM32 passen) ===
 IKARUS_MSG_THRUST = 1
 IKARUS_MSG_ARMING = 0
@@ -65,6 +132,9 @@ IKARUS_MSG_SAMPLE_UPDATE = 10
 
 IKARUS_MAG_CALIBRATE = 50
 
+IKARUS_SPECIAL_COMMAND = 100
+
+
 # ============================================================
 #                     COMMUNICATION-CLASS
 # ============================================================
@@ -72,6 +142,7 @@ class Communication:
     roll = 0.0
     pitch = 0.0
     yaw = 0.0
+    ultrasonic = 0.0
 
     def __init__(self, port="/dev/tty.usbserial-A5069RR4", baud=9600):
         self.ser = serial.Serial(port, baudrate=baud, timeout=1)
@@ -89,7 +160,8 @@ class Communication:
 
     def _rx_loop(self):
         """Thread zum Lesen kompletter UART-Pakete oder Textzeilen."""
-        PACKET_LENGTH = 104
+        PAYLOAD_MAX = 100  # wie in IKARUS_MSG_MAX_PAYLOAD
+        MESSAGE_LENGTH = 1 + 1 + 1 + PAYLOAD_MAX + 1  # Start + Type + Length + Payload + CRC
         TIMEOUT = 0.05
 
         while True:
@@ -98,13 +170,13 @@ class Communication:
                 if not byte:
                     continue
 
-                # --- Fall: Startbyte eines Binärpakets ---
+                # --- Startbyte eines Binärpakets ---
                 if byte[0] == 0xAA:
                     buffer = bytearray(byte)
                     start_time = time.time()
 
-                    while len(buffer) < PACKET_LENGTH:
-                        chunk = self.ser.read(PACKET_LENGTH - len(buffer))
+                    while len(buffer) < MESSAGE_LENGTH:
+                        chunk = self.ser.read(MESSAGE_LENGTH - len(buffer))
                         if chunk:
                             buffer.extend(chunk)
                             start_time = time.time()
@@ -112,30 +184,72 @@ class Communication:
                             print("Timeout beim Lesen des Pakets")
                             break
 
-                    if len(buffer) == PACKET_LENGTH:
-                        payload_len = buffer[2]
-                        if payload_len >= 12:
-                            payload = buffer[3:3 + 12]
-                            self.pitch, self.roll, self.yaw = struct.unpack('<fff', payload)
-                            print("→ Pitch =", self.pitch, "Roll =", self.roll, "Yaw =", self.yaw)
+                    if len(buffer) == MESSAGE_LENGTH:
+                        # Header auslesen
+                        start, msg_type, payload_length = buffer[:3]
+                        if payload_length > PAYLOAD_MAX:
+                            print("Ungültige Payload-Länge:", payload_length)
+                            continue
 
-                    continue  # WICHTIG: zurück zum Anfang
+                        # Payload extrahieren
+                        payload = buffer[3:3 + payload_length]
+                        crc_received = buffer[3 + PAYLOAD_MAX]  # CRC ist immer am Ende des fixed Payload
 
-                # --- Fall: KEIN Startbyte ---
-                # Wir prüfen, ob das Byte ASCII-Text sein kann (>=32 & <=126 oder CR/LF)
+                        # # CRC prüfen
+                        # crc_calc = (sum(buffer[:3 + PAYLOAD_MAX]) & 0xFF)
+                        # if crc_calc != crc_received:
+                        #     print("CRC Fehler")
+                        #     continue
+
+                        # Struktur dekodieren (nur die tatsächliche Strukturgröße)
+                        log = ikarus_log_data_t.from_buffer_copy(payload[:ctypes.sizeof(ikarus_log_data_t)])
+
+                        # Beispiel-Ausgabe
+                        print(
+                            f"→ ACC = ({log.sensors_data.acc.x:.3f}, "
+                            f"{log.sensors_data.acc.y:.3f}, {log.sensors_data.acc.z:.3f})"
+                        )
+                        print(
+                            f"→ Gyro = ({log.sensors_data.gyr.x:.3f}, "
+                            f"{log.sensors_data.gyr.y:.3f}, {log.sensors_data.gyr.z:.3f})"
+                        )
+                        print(
+                            f"→ Mag = ({log.sensors_data.mag.x:.3f}, "
+                            f"{log.sensors_data.mag.y:.3f}, {log.sensors_data.mag.z:.3f})"
+                        )
+                        print(
+                            f"→ Estimation roll={log.estimation_state.roll:.3f}, "
+                            f"pitch={log.estimation_state.pitch:.3f}, "
+                            f"yaw={log.estimation_state.yaw:.3f}"
+                        )
+                        print(
+                            f"→ Control thrusts: "
+                            f"{log.control_outputs.thrust1}, "
+                            f"{log.control_outputs.thrust2}, "
+                            f"{log.control_outputs.thrust3}, "
+                            f"{log.control_outputs.thrust4}"
+                        )
+
+                        # interne Variablen updaten
+                        self.pitch = log.estimation_state.pitch
+                        self.roll = log.estimation_state.roll
+                        self.yaw = log.estimation_state.yaw
+                        self.ultrasonic = log.sensors_data.ultrasonic
+
+                    continue
+
+                # --- ASCII Text ---
                 if 32 <= byte[0] <= 126 or byte in (b'\n', b'\r'):
-                    # Wir behandeln das als Textzeile:
                     line = byte + self.ser.readline()
                     print("Text:", line.decode(errors='replace').rstrip())
+
+                # sonst: binäre Noise → ignorieren
                 else:
-                    # Binäre Noise → einfach ignorieren, NICHT als Text ausgeben
-                    # (Sonst zerstören wir die Suche nach AA)
                     pass
 
             except serial.SerialException:
                 print("UART geschlossen.")
                 break
-
     # ----------------------------------------------------------
     #               MESSAGE SEND HELPER
     # ----------------------------------------------------------
@@ -208,6 +322,12 @@ class Communication:
         pkt = self._send_message(IKARUS_MAG_CALIBRATE, payload)
         print(f"→ Gesendet: Mag Calibrate (Paketgröße {len(pkt)} Bytes)")
 
+
+
+    def send_special_command(self, command_id: int):
+        payload = struct.pack("<I", command_id)
+        pkt = self._send_message(IKARUS_SPECIAL_COMMAND, payload)
+        print(f"→ Gesendet: Special Command ID = {command_id} (Paketgröße {len(pkt)} Bytes)")
 # ============================================================
 #                 Beispiel-Nutzung
 # ============================================================

@@ -13,6 +13,8 @@
 #include "stm32h7xx_hal.h"
 #include <string>
 #include "estimation/estimation.hpp"
+#include "logging/logging_sample.h"
+
 // Define error flag macros for communication error responses.
 #define IKARUS_COMM_ERROR_FLAG_UNKNOWN         0x01  ///< Unknown error flag.
 #define IKARUS_COMM_ERROR_FLAG_WRONG_ADDRESS   0x02  ///< Error flag
@@ -21,9 +23,7 @@
 #define IKARUS_COMM_ERROR_FLAG_LEN             0x05  ///< Error flag for length mismatches.
 #define IKARUS_COMM_ERROR_FLAG_MSG_TYPE        0x06  ///< Error flag for
 
-typedef struct ikarus_logging_sample_t{
-	uint32_t error;
-};
+
 
 typedef struct ikarus_communication_config_t {
 	UART_HandleTypeDef *huart;  ///< UART handle for communication.
@@ -41,10 +41,9 @@ public:
     // Senden über UART
     void send(const char *msg);
     void sendBinary(const uint8_t *data, size_t len);
-    void sendSample(ikarus_estimation_state_t *sample);
+    void sendSample(ikarus_log_data_t *sample);
 
     ikarus_communication_config_t config;
-    ikarus_logging_sample_t _sample_buffer_tx;
 private:
     void handleCommand(const std::string &cmd, const std::string &value);
 

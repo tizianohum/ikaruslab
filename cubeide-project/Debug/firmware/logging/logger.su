@@ -1,0 +1,4 @@
+/Users/tizianohumpert/Documents/IMES/Ikarus/ikaruslab/cubeide-project/firmware/Control/Control.hpp:98:27:ikarus_control_outputs_t IKARUS_ControlManager::getOutputs()	16	static
+../firmware/logging/logger.cpp:14:1:IKARUS_Logger::IKARUS_Logger()	16	static
+../firmware/logging/logger.cpp:16:6:void IKARUS_Logger::init(ikarus_logger_config_t)	16	static
+../firmware/logging/logger.cpp:19:6:void IKARUS_Logger::sendLog()	64	static

@@ -78,6 +78,64 @@ void IKARUS_MotorController::setThrust(float t1, float t2, float t3, float t4) {
     osSemaphoreRelease(this->motorSemaphore);
 }
 
+void IKARUS_MotorController::setThrust1(uint32_t thrust) {
+    if (thrust <= MAX_THRUST)
+        this->thrust1 = thrust;
+}
+
+void IKARUS_MotorController::setThrust2(uint32_t thrust) {
+    if (thrust <= MAX_THRUST)
+    	this->thrust2 = thrust;
+}
+
+void IKARUS_MotorController::setThrust3(uint32_t thrust) {
+    if (thrust <= MAX_THRUST)
+    	this->thrust3 = thrust;
+}
+
+void IKARUS_MotorController::setThrust4(uint32_t thrust) {
+    if (thrust <= MAX_THRUST)
+    	this->thrust4 = thrust;
+}
+
+void IKARUS_MotorController::beepMotor(uint8_t motorIndex){
+	if(motorIndex <1 || motorIndex >4){
+		return;
+	}
+    uint32_t _dshotBuffer[17];
+    for (int i = 0; i < 17; i++) {
+        _dshotBuffer[i] = 333;
+    }
+
+    // Gewählten Motor auswählen (Index 0..3)
+    Motor *motor = motors[motorIndex - 1];
+
+    // PWM/DShot nur auf diesem Motor starten
+    if (HAL_TIM_PWM_Start_DMA(motor->_htim, motor->_channel, _dshotBuffer, 17)) {
+        Error_Handler();
+    }
+
+    osDelay(1);
+	motors[motorIndex-1]->setSignal(3);
+	motors[motorIndex-1]->updatePWM();
+	osDelay(500);
+
+
+}
+
+void IKARUS_MotorController::reverseMotorSpin(uint8_t motorIndex){
+	if(motorIndex <1 || motorIndex >4){
+		return;
+	}
+	for(uint8_t i=0; i<12; i++){
+		motors[motorIndex-1]->setSignal(21);
+		motors[motorIndex-1]->updatePWM();
+		osDelay(1);
+	}
+	motors[motorIndex-1]->setSignal(12);
+	motors[motorIndex-1]->updatePWM();
+	osDelay(500);
+}
 
 void IKARUS_MotorController::updateAllMotors() {
 	osSemaphoreAcquire(this->motorSemaphore, osWaitForever);
